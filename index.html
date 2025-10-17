@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Live Date & Time</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      text-align: center;
+      padding-top: 100px;
+    }
+    #clock {
+      font-size: 2em;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Current Date & Time</h1>
+  <div id="clock">Loading...</div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const date = now.toLocaleDateString();
+      const time = now.toLocaleTimeString();
+      document.getElementById('clock').textContent = `${date} ${time}`;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock(); // initial call
+  </script>
+</body>
+</html>
