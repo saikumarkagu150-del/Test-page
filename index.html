@@ -3,34 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Live Date & Time</title>
+  <title>Colorful Clock</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f0f0f0;
-      text-align: center;
-      padding-top: 100px;
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4, #fbc2eb, #a18cd1);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
     }
-    #clock {
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .clock-container {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 40px 60px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      color: #fff;
+      backdrop-filter: blur(10px);
+    }
+
+    .clock-container h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    .clock-container #clock {
       font-size: 2em;
-      color: #333;
+      font-weight: bold;
+      letter-spacing: 1px;
     }
   </style>
 </head>
 <body>
-  <h1>Current Date & Time</h1>
-  <div id="clock">Loading...</div>
+  <div class="clock-container">
+    <h1>Live Date & Time</h1>
+    <div id="clock">Loading...</div>
+  </div>
 
   <script>
     function updateClock() {
       const now = new Date();
       const date = now.toLocaleDateString();
       const time = now.toLocaleTimeString();
-      document.getElementById('clock').textContent = `${date} ${time}`;
+      document.getElementById('clock').textContent = `${date} — ${time}`;
     }
 
     setInterval(updateClock, 1000);
-    updateClock(); // initial call
+    updateClock();
   </script>
 </body>
 </html>
