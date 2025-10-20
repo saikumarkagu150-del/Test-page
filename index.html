@@ -56,7 +56,8 @@
       const now = new Date();
       const date = now.toLocaleDateString();
       const time = now.toLocaleTimeString();
-      document.getElementById('clock').textContent = `${date} — ${time}`;
+      const calendar = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+      document.getElementById('clock').textContent = `${date} — ${time} — ${calendar}`;
     }
 
     setInterval(updateClock, 1000);
